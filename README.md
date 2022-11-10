@@ -1,0 +1,2 @@
+# mailrocket
+Email newsletter backend
