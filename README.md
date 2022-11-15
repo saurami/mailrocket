@@ -39,10 +39,16 @@ The application iterates over all registered endpoints until it finds a match, a
   cargo add tokio --features "macros rt-multi-thread"
   ```
 
-+ Compile project
++ Compile project (and check dependencies for errors)
 
   ```
   cargo check
+  ```
+
++ Run integration test
+
+  ```
+  cargo test
   ```
 
 + Run web server
