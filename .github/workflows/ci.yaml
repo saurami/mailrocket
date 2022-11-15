@@ -1,0 +1,33 @@
+name: MailRocket
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Update rust
+        run: |
+          rustup update
+          cargo --version
+          rustc --version
+
+      - name: Add dependencies (to manifest file)
+        run: |
+          cargo add actix-web
+		  cargo add tokio --features "macros rt-multi-thread"
+
+      - name: Compile project (and check dependencies for errors)
+        run: cargo check
+
+      - name: Run integration tests
+        run: cargo test --verbose
