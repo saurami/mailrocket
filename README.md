@@ -1,3 +1,5 @@
+[![MailRocket](https://github.com/saurabhmshr/mailrocket/actions/workflows/ci.yaml/badge.svg)](https://github.com/saurabhmshr/mailrocket/actions/workflows/ci.yaml)
+
 # mailrocket
 
 Email newsletter backend
