@@ -24,7 +24,7 @@ jobs:
       - name: Add dependencies (to manifest file)
         run: |
           cargo add actix-web
-		  cargo add tokio --features "macros rt-multi-thread"
+          cargo add tokio --features "macros rt-multi-thread"
 
       - name: Compile project (and check dependencies for errors)
         run: cargo check
