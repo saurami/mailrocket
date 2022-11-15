@@ -54,5 +54,5 @@ The application iterates over all registered endpoints until it finds a match, a
 + Verify application (**in a separate tab**)
 
   ```
-  curl 127.0.0.1:8080
+  curl 127.0.0.1:8080/hello
   ```
