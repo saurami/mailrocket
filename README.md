@@ -14,6 +14,8 @@ Each release has documentation about features and improvements. This release has
 
 + [Testing][5]
 
++ [Technicalities][6]
+
 ## Getting Started
 
 + Compile project (and check dependencies for errors)
@@ -45,3 +47,4 @@ Each release has documentation about features and improvements. This release has
 [3]: ./docs/app-anatomy.md
 [4]: ./docs/directory-structure.md
 [5]: ./docs/testing.md
+[6]: ./docs/technicalities.md
