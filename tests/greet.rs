@@ -8,11 +8,20 @@ async fn greeting_works() {
         .await
         .expect("Failed to execute request");
 
-    assert!(response.status().is_success());
+    assert!(response.status().is_success(), "Endpoint validity");
     assert_eq!(
-        Some(12),
+        response.headers().get("Content-Type").unwrap(),
+        "text/plain; charset=utf-8"
+    );
+    assert_eq!(
         response.content_length(),
-        "Length of 'Hello, World!' is 12"
+        Some(13),
+        "Response length is 13 characters"
+    );
+    assert_eq!(
+        response.text().await.unwrap(),
+        "Hello, World!",
+        "Response from endpoint"
     );
 }
 
