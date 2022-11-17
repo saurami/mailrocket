@@ -1,13 +1,19 @@
+mod common;
+
 #[tokio::test]
-async fn greeting_works() {
-    spawn_app();
+async fn greet_works() {
+    // arrange
+    let address = common::spawn_app();
     let client = reqwest::Client::new();
+
+    // act
     let response = client
-        .get("http://127.0.0.1:8080/hello")
+        .get(&format!("{}/hello", &address))
         .send()
         .await
-        .expect("Failed to execute request");
+        .expect("Failed to execute hello world request");
 
+    // assert
     assert!(response.status().is_success(), "Endpoint validity");
     assert_eq!(
         response.headers().get("Content-Type").unwrap(),
@@ -23,9 +29,4 @@ async fn greeting_works() {
         "Hello, World!",
         "Response from endpoint"
     );
-}
-
-fn spawn_app() {
-    let server = mailrocket::run().expect("Failed to bind address");
-    let _ = tokio::spawn(server);
 }
