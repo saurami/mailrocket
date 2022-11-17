@@ -2,7 +2,7 @@
 
 # Mail Rocket
 
-Email newsletter backend based on [Zero to Production in Rust][1] by [Luca Palmieri's][2]
+Email newsletter backend based on [Zero to Production in Rust][1] by [Luca Palmieri][2]
 
 ## Documentation
 
