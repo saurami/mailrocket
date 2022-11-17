@@ -1,14 +1,23 @@
 use actix_web::dev::Server;
-use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer, Responder};
+use std::net::TcpListener;
 
 async fn greet(req: HttpRequest) -> impl Responder {
     let name = req.match_info().get("name").unwrap_or("World");
     format!("Hello, {}!", &name)
 }
 
-pub fn run() -> Result<Server, std::io::Error> {
-    let server = HttpServer::new(|| App::new().route("/hello", web::get().to(greet)))
-        .bind("127.0.0.1:8080")?
-        .run();
+async fn health_check() -> HttpResponse {
+    HttpResponse::Ok().finish()
+}
+
+pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
+    let server = HttpServer::new(|| {
+        App::new()
+            .route("/health-check", web::get().to(health_check))
+            .route("/hello", web::get().to(greet))
+    })
+    .listen(listener)?
+    .run();
     Ok(server)
 }
