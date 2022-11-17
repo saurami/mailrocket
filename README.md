@@ -36,10 +36,16 @@ Each release has documentation about features and improvements. This release has
   cargo run
   ```
 
+  **Note:** Export these environment variables only if `cargo run` doesn't show the bind address and port
+
+  Powershell: `$env:RUST_LOG="trace"`
+  Bash / Zsh: `export RUST_LOG="trace"`
+
 + Verify application (**in a separate tab or window**)
 
   ```
-  curl 127.0.0.1:8080/hello
+  curl 127.0.0.1:PORT/hello
+  curl 127.0.0.1:PORT/health-check
   ```
 
 [1]: https://www.zero2prod.com/
